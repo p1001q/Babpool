@@ -1,0 +1,61 @@
+/* manageReview.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f5eb;
+    margin: 0;
+    padding: 20px;
+}
+
+.manage-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow-x: auto;  /* 스크롤 가능하게 추가 */
+}
+
+h2 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+table {
+    width: max-content; /* 내용 크기에 맞춰 테이블 자동 확장 */
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden;    /* 넘치는 건 숨김 */
+    text-overflow: ellipsis; /* 말줄임표 적용 */
+    max-width: 200px;    /* 셀 최대 폭 제한 */
+}

@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+/* /resource/css/welcome.css */
+
+body {
+  background-color: #f8f5eb;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+.language-btns {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.language-btns button {
+  margin-left: 5px;
+  border-radius: 8px;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo-title {
+  font-size: 3rem;
+  color: #1b5e20;
+  font-weight: bold;
+  margin-bottom: 20px; 
+} 
+
+.mascot-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.speech-bubble {
+  position: relative;
+  border: 2px solid #1b5e20;
+  border-radius: 12px;
+  padding: 15px;
+  max-width: 180px;
+  font-size: 1.1rem;
+  background: #fff;
+  color: #1b5e20;
+}
+
+.speech-bubble.left::after,
+.speech-bubble.right::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.speech-bubble.left::after {
+  border-left-color: #fff;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.speech-bubble.left::before {
+  content: "";
+  position: absolute;
+  right: -22px;
+  top: calc(50% - 10px);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: #1b5e20;
+  z-index: -1;
+}
+
+.speech-bubble.right::after {
+  border-right-color: #fff;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.speech-bubble.right::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: calc(50% - 10px);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-right-color: #1b5e20;
+  z-index: -1;
+}
+
+.bob-mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.bob-mascot:hover {
+  transform: scale(1.05);
+}
+
+.bob-mascot img {
+  width: 220px;
+  height: auto;
+}
+
+.click-text {
+  color: #aaa;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 90%;
+  left: 70%;
+  transform: translateX(-50%);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .mascot-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .bob-mascot img {
+    width: 130px;
+  }
+
+  .logo-title {
+    font-size: 2.2rem;
+  }
+}

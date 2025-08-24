@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+	
+	<!-- log -->
+		
+	<filter>
+	    <filter-name>LogFileFilter</filter-name>
+	    <filter-class>com.babpool.filter.LogFileFilter</filter-class>
+	    <init-param>
+	        <param-name>filename</param-name>
+	        <!-- <param-value>C:\Users\tndus\workspace_bob\web_server\Babpool\src\main\webapp\logs\monitor.log</param-value> --> 
+	        <!--수연 경로>> C:\Users\tndus\workspace_bob\web_server\Babpool\src\main\webapp\logs\monitor.log -->
+	        <param-value>/Users/yeeso/Desktop/webserverfinal/Babpool/src/main/webapp/logs/monitor.log</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>LogFileFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+		
+	<!-- cookie -->	
+	<filter>
+	    <filter-name>AutoLoginFilter</filter-name>
+	    <filter-class>com.babpool.filter.AutoLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>AutoLoginFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+    
+    <!-- admin-marker -->
+    
+    <servlet>
+	    <servlet-name>AdminMarkerCategoryInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.marker.AdminMarkerCategoryInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMarkerCategoryInsertServlet</servlet-name>
+	    <url-pattern>/AdminMarkerCategoryInsertServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMarkerInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.marker.AdminMarkerInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMarkerInsertServlet</servlet-name>
+	    <url-pattern>/AdminMarkerInsertServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMarkerSelectAllServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.marker.AdminMarkerSelectAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMarkerSelectAllServlet</servlet-name>
+	    <url-pattern>/AdminMarkerSelectAllServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMarkerSelectByStoreIdServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.marker.AdminMarkerSelectByStoreIdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMarkerSelectByStoreIdServlet</servlet-name>
+	    <url-pattern>/AdminMarkerSelectByStoreIdServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminMarkerTagInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.marker.AdminMarkerTagInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMarkerTagInsertServlet</servlet-name>
+	    <url-pattern>/AdminMarkerTagInsertServlet</url-pattern>
+	</servlet-mapping>
+	
+    <!-- admin-menu -->
+    
+    <servlet>
+	    <servlet-name>AdminMenuSelectAllServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.menu.AdminMenuSelectAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMenuSelectAllServlet</servlet-name>
+	    <url-pattern>/AdminMenuSelectAllServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMenuDeleteServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.menu.AdminMenuDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMenuDeleteServlet</servlet-name>
+	    <url-pattern>/AdminMenuDeleteServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMenuInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.menu.AdminMenuInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMenuInsertServlet</servlet-name>
+	    <url-pattern>/AdminMenuInsertServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminMenuUpdateServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.menu.AdminMenuUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminMenuUpdateServlet</servlet-name>
+	    <url-pattern>/AdminMenuUpdateServlet</url-pattern>
+	</servlet-mapping>
+    
+    <!-- admin-review -->
+    
+    <servlet>
+	    <servlet-name>AdminReviewDeleteServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.review.AdminReviewDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminReviewDeleteServlet</servlet-name>
+	    <url-pattern>/AdminReviewDeleteServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminReviewSelectAllServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.review.AdminReviewSelectAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminReviewSelectAllServlet</servlet-name>
+	    <url-pattern>/AdminReviewSelectAllServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminReviewSelectByIdServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.review.AdminReviewSelectByIdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminReviewSelectByIdServlet</servlet-name>
+	    <url-pattern>/AdminReviewSelectByIdServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminReviewUpdateServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.review.AdminReviewUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminReviewUpdateServlet</servlet-name>
+	    <url-pattern>/AdminReviewUpdateServlet</url-pattern>
+	</servlet-mapping>
+	
+    <!-- admin-store -->
+    
+    <servlet>
+	    <servlet-name>AdminStoreCategoryInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreCategoryInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreCategoryInsertServlet</servlet-name>
+	    <url-pattern>/AdminStoreCategoryInsertServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminStoreDeleteServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreDeleteServlet</servlet-name>
+	    <url-pattern>/AdminStoreDeleteServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminStoreInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreInsertServlet</servlet-name>
+	    <url-pattern>/AdminStoreInsertServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminStoreSelectAllServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreSelectAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreSelectAllServlet</servlet-name>
+	    <url-pattern>/AdminStoreSelectAllServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminStoreSelectByIdServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreSelectByIdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreSelectByIdServlet</servlet-name>
+	    <url-pattern>/AdminStoreSelectByIdServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminStoreTagInsertServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreTagInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreTagInsertServlet</servlet-name>
+	    <url-pattern>/AdminStoreTagInsertServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminStoreUpdateServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.store.AdminStoreUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminStoreUpdateServlet</servlet-name>
+	    <url-pattern>/AdminStoreUpdateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- admin-user -->
+    
+    <servlet>
+	    <servlet-name>AdminUserDeleteServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.user.AdminUserDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminUserDeleteServlet</servlet-name>
+	    <url-pattern>/AdminUserDeleteServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminUserSelectAllServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.user.AdminUserSelectAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminUserSelectAllServlet</servlet-name>
+	    <url-pattern>/AdminUserSelectAllServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminUserSelectByIdServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.user.AdminUserSelectByIdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminUserSelectByIdServlet</servlet-name>
+	    <url-pattern>/AdminUserSelectByIdServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>AdminUserUpdateServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.admin.user.AdminUserUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminUserUpdateServlet</servlet-name>
+	    <url-pattern>/AdminUserUpdateServlet</url-pattern>
+	</servlet-mapping>
+    
+    <!-- user -->
+    
+    <servlet>
+	    <servlet-name>ChangePasswordServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.ChangePasswordServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ChangePasswordServlet</servlet-name>
+	    <url-pattern>/ChangePasswordServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>DeleteUserServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.DeleteUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DeleteUserServlet</servlet-name>
+	    <url-pattern>/DeleteUserServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>JoinServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.JoinServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>JoinServlet</servlet-name>
+	    <url-pattern>/JoinServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>LoginServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>LoginServlet</servlet-name>
+	    <url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>LogoutServlet</servlet-name>
+	    <url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>PlaceDetailServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.PlaceDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>PlaceDetailServlet</servlet-name>
+	    <url-pattern>/PlaceDetailServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>ReviewDeleteServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.ReviewDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ReviewDeleteServlet</servlet-name>
+	    <url-pattern>/ReviewDeleteServlet</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+	    <servlet-name>SendEmailServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.SendEmailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SendEmailServlet</servlet-name>
+	    <url-pattern>/SendEmailServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>SubmitReviewServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.SubmitReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SubmitReviewServlet</servlet-name>
+	    <url-pattern>/SubmitReviewServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>ToggleBookmarkServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.ToggleBookmarkServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ToggleBookmarkServlet</servlet-name>
+	    <url-pattern>/ToggleBookmarkServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>UploadProfileServlet</servlet-name>
+	    <servlet-class>com.babpool.controller.user.UploadProfileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>UploadProfileServlet</servlet-name>
+	    <url-pattern>/UploadProfileServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RandomStoreServlet</servlet-name>
+		<servlet-class>com.babpool.controller.user.RandomStoreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		 <servlet-name>RandomStoreServlet</servlet-name>
+		 <url-pattern>/RandomStoreServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- error-page -->
+
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+	    <error-code>500</error-code>
+	    <location>/error500.jsp</location>
+	</error-page>
+	
+	<error-page>
+	    <exception-type>java.lang.NullPointerException</exception-type>
+	    <location>/errorNPE.jsp</location>
+	</error-page>
+	
+	<error-page>
+	    <exception-type>java.lang.IllegalArgumentException</exception-type>
+	    <location>/errorIAE.jsp</location>
+	</error-page>
+		
+	
+</web-app>

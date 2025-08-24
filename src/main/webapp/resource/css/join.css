@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f5eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 960px;
+    padding: 10px 20px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-area img {
+    height: 36px;
+}
+
+.logo-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1b5e20;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.header-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.signup-container {
+    width: 380px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.email-with-button, .code-with-button {
+    display: flex;
+    gap: 8px;
+}
+
+.email-with-button input,
+.code-with-button input {
+    flex: 1;
+}
+
+.email-with-button button,
+.code-with-button button {
+    padding: 8px 12px;
+    background-color: #76B82A;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.timer-text {
+    display: inline-block;
+    min-width: 60px;
+    font-size: 0.9rem;
+    color: #D2691E;
+    margin-left: 5px;
+    line-height: 34px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1b5e20;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #155d1d;
+}
+
+.page-footer {
+    font-size: 0.75rem;
+    color: #888;
+    padding: 8px 15px;
+    text-align: left;
+}
+
+#pw-warning {
+    font-size: 0.8rem;
+    color: red;
+    margin-left: 10px;
+}

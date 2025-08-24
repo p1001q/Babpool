@@ -1,0 +1,239 @@
+/* main.css 병합 최종본 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f5eb;
+  overflow: hidden;
+}
+
+.main-container-wrapper {
+  width: 95%;
+  height: calc(100vh - 120px);
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 25px;
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* 카테고리 영역 */
+.category-list {
+  width: 20%;
+  padding-right: 20px;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -10px;
+     
+}
+
+.category-grid,
+.category-grid.sub {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.category-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.category-grid.sub {
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 10px;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.category-item:hover {
+  transform: scale(1.1);
+}
+
+.category-item img {
+  width: 45px;
+  height: 45px;
+}
+
+.category-item span {
+  margin-top: 3px;
+  font-size: 0.7rem;
+  color: black;
+}
+
+.category-divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* 지도 영역 */
+.map-section {
+  width: 60%;
+  padding: 0 20px;
+}
+
+.map-placeholder {
+  height: 100%;
+  background-color: #eaeaea;
+  border: 2px dashed #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Top3 리스트 */
+.top-list {
+  width: 20%;
+}
+
+.top-list h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.top-link {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 기본 색상 상속 (기존 박스 스타일 유지) */
+  display: block; /* 링크가 블록 요소로 작동하게 만들어 박스 전체를 클릭 가능하게 만듬 */
+}
+
+.top-card {
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 12px;
+  display: flex; /* 수정된 부분: flex로 가로 정렬 */
+  align-items: center; /* 수정된 부분: 수평 정렬 */
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.top-card:hover {
+  background-color: #f0f0f0;
+}
+
+.top-card img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px; /* 아이콘과 텍스트 사이에 간격 추가 */
+  /* 아이콘은 왼쪽에 고정되므로 별도의 스타일을 추가하지 않음 */
+}
+
+.top-info {
+  display: flex; /* 수정된 부분: 내부 요소들이 가로로 배치 */
+  justify-content: space-between; /* 수정된 부분: 각 항목이 균등하게 배치되도록 */
+  flex: 1; /* 나머지 공간을 모두 차지하게 설정 */
+
+}
+
+.top-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 0.9rem; 
+}
+
+.top-stars {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.top-stars .star {
+  color: gold;
+  margin-right: 2px;
+}
+
+.top-like {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+
+.top-like .heart {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.top-tag {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* 마스코트 영역 */
+#mascotCharacter {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    cursor: pointer;
+}
+
+
+.mascot-area {
+  position: fixed;
+  bottom: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.mascot-area img {
+  width: 300px;
+   transition: transform 0.05s;
+  cursor: pointer;
+}
+
+.mascot-area img:hover {
+  transform: scale(1.1);
+}
+
+#helpOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.help-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.help-box button {
+  margin: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+/* mainPage - 카테고리 / 태그  */
+.category-link,
+.category-link:link,
+.category-link:visited,
+.category-link:hover,
+.category-link:active {
+    color: black;          /* 글씨 검정색 */
+    text-decoration: none; /* 밑줄 제거 */
+}

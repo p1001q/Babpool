@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>BobPool - 메인 페이지</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f5eb;
+      overflow: hidden;
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: none;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area img {
+      height: 40px;
+    }
+
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+
+    .clock {
+      font-size: 0.95rem;
+      color: #D2B48C;
+      position: relative;       /* 기준 위치에서 밀기 */
+      left: -5px;               /* ← 왼쪽으로 5px 이동 */
+      top: -5px; 
+      text-align: center;  /* 두 줄 중앙 정렬 */
+      line-height: 1.2;    /* 줄 간격 살짝 조절 */
+    }
+
+    .search-bar {
+      position: relative;
+      width: 320px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 90px 10px 15px;
+      font-size: 1rem;
+      border: 2px solid #76B82A;
+      border-radius: 30px;
+    }
+
+    .search-bar select,
+    .search-bar button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .search-bar select {
+      right: 45px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .search-bar button {
+      right: 10px;
+      color: #0f0;
+      font-size: 1.2rem;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 20px;
+      transform: translateX(-10px);
+    }
+
+    .header-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .main-container-wrapper {
+      width: 95%;
+      height: calc(100vh - 120px);
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 25px;
+      display: flex;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .category-list {
+      width: 20%;
+      padding-right: 20px;
+      border-right: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .category-grid,
+    .category-grid.sub {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-grid.sub {
+      grid-template-columns: repeat(2, 1fr);
+      padding-left: 10px;
+    }
+
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .category-item:hover {
+      transform: scale(1.1);
+    }
+
+    .category-item img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .category-item span {
+      margin-top: 5px;
+      font-size: 0.85rem;
+    }
+
+    .category-divider {
+      border: none;
+      height: 1px;
+      background-color: #ccc;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .map-section {
+      width: 60%;
+      padding: 0 20px;
+    }
+
+    .map-placeholder {
+      height: 100%;
+      background-color: #eaeaea;
+      border: 2px dashed #aaa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-list {
+      width: 20%;
+    }
+
+    .top-list h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .top-card {
+      background-color: #fefefe;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 10px;
+      transition: background-color 0.2s ease;
+    }
+    
+    .top-card:hover {
+    background-color: #f0f0f0;
+    }
+    
+
+    .top-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .top-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-name {
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .top-stars {
+      display: flex;
+      margin-bottom: 3px;
+    }
+
+    .top-stars .star {
+      color: gold;
+      margin-right: 2px;
+    }
+
+    .top-like {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 3px;
+    }
+
+    .top-like .heart {
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .top-tag {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .mascot-area {
+      position: fixed;
+      bottom: -140px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+
+    .mascot-area img {
+      width: 300px;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .mascot-area img:hover {
+      transform: scale(1.1);
+    }
+
+    #helpOverlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .help-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .help-box button {
+      margin: 8px;
+      padding: 10px 15px;
+      font-size: 1rem;
+    }
+
+    .page-footer {
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+  <script>
+  function updateClock() {
+	    const now = new Date();
+
+	    const month = String(now.getMonth() + 1).padStart(2, '0'); // 월
+	    const date = String(now.getDate()).padStart(2, '0');       // 일
+	    const hours = String(now.getHours()).padStart(2, '0');     // 시
+	    const minutes = String(now.getMinutes()).padStart(2, '0'); // 분
+
+	    const clockText = `${month}/${date}<br>${hours}:${minutes}`; // 2줄로
+
+	    document.getElementById('clock').innerHTML = clockText;
+	  }
+
+	  setInterval(updateClock, 1000);
+	  window.onload = updateClock;
+
+    function openHelp() {
+      document.getElementById('helpOverlay').style.display = 'flex';
+    }
+
+    function closeHelp() {
+      document.getElementById('helpOverlay').style.display = 'none';
+    }
+
+    function toggleHeart(el) {
+      el.textContent = el.textContent === '🤍' ? '❤️' : '🤍';
+    }
+  </script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-area">
+  	  <img src="/Babpool/resource/images/sk_logo.png" alt="서경대학교 로고">
+	  <span class="logo-title">BobPool</span>
+  	  <span class="clock" id="clock">--:--</span>
+	</div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="검색어 입력">
+      <select id="searchType">
+        <option value="food" selected>음식명</option>
+        <option value="store">상호명</option>
+      </select>
+      <button>🔍</button>
+    </div>
+
+    <div class="header-icons">
+      <div class="header-icon-item">
+        <span>🔑</span>
+        <span>로그인</span>
+      </div>
+      <div class="header-icon-item">
+        <span>🏠</span>
+        <span>홈</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container-wrapper">
+    <aside class="category-list">
+      <div class="category-grid">
+        <div class="category-item"><img src="img/han.png"><span>한식</span></div>
+        <div class="category-item"><img src="img/jung.png"><span>중식</span></div>
+        <div class="category-item"><img src="img/yang.png"><span>양식</span></div>
+        <div class="category-item"><img src="img/il.png"><span>일식</span></div>
+        <div class="category-item"><img src="img/bunsik.png"><span>분식</span></div>
+        <div class="category-item"><img src="img/healthy.png"><span>건강식</span></div>
+        <div class="category-item"><img src="img/fusion.png"><span>퓨전</span></div>
+        <div class="category-item"><img src="img/chicken.png"><span>치킨</span></div>
+        <div class="category-item"><img src="img/burger.png"><span>버거</span></div>
+      </div>
+      <hr class="category-divider">
+      <div class="category-grid sub">
+        <div class="category-item"><img src="img/solo.png"><span>혼밥</span></div>
+        <div class="category-item"><img src="img/group.png"><span>단체석</span></div>
+        <div class="category-item"><img src="img/delivery.png"><span>배달가능</span></div>
+        <div class="category-item"><img src="img/night.png"><span>야간/24시</span></div>
+      </div>
+    </aside>
+
+    <section class="map-section">
+      <div class="map-placeholder">
+        <p>📍 지도 API 삽입 예정</p>
+      </div>
+    </section>
+
+    <aside class="top-list">
+      <h3>서경인들의 맛집 TOP 3</h3>
+
+      <div class="top-card">
+        <img src="img/sample1.jpg" alt="식당1">
+        <div class="top-info">
+          <div class="top-name">A식당</div>
+          <div class="top-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span><span class="star">☆</span></div>
+          <div class="top-like"><span class="heart" onclick="toggleHeart(this)">🤍</span><span>14</span></div>
+          <div class="top-tag">#중식</div>
+        </div>
+      </div>
+
+      <div class="top-card">
+        <img src="img/sample2.jpg" alt="식당2">
+        <div class="top-info">
+          <div class="top-name">B식당</div>
+          <div class="top-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
+          <div class="top-like"><span class="heart" onclick="toggleHeart(this)">🤍</span><span>21</span></div>
+          <div class="top-tag">#한식</div>
+        </div>
+      </div>
+
+      <div class="top-card">
+        <img src="img/sample3.jpg" alt="식당3">
+        <div class="top-info">
+          <div class="top-name">C식당</div>
+          <div class="top-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="top-like"><span class="heart" onclick="toggleHeart(this)">🤍</span><span>33</span></div>
+          <div class="top-tag">#일식</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="mascot-area">
+   <img src="/Babpool/resource/images/mascot_close.png" alt="마스코트" onclick="openHelp()">
+  </div>
+
+  <div id="helpOverlay">
+    <div class="help-box">
+      <p>어떻게 도와줄까?</p>
+      <button onclick="alert('주변 밥집 추천 중...'); closeHelp();">주변 밥집 추천해줘</button>
+      <button onclick="alert('랜덤 메뉴 추천 중...'); closeHelp();">메뉴만 추천해줘</button>
+      <button onclick="closeHelp()">괜찮아</button>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    ⓒ 김동국. 박수연
+  </footer>
+</body>
+</html>

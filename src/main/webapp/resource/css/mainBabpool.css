@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+/* 검정 오버레이 */
+#helpOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+/* 말풍선 모달 */
+#mascotModal {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1100;
+    display: none;
+}
+
+#mascotModal::after {
+    content: "";
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* 밥풀이 이미지 */
+#mascotCharacter {
+    position: fixed;
+    bottom: -140px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1200;
+    display: none;
+}
+
+#mascotCharacter img {
+    width: 370px;
+}
+
+/* 기본 버튼 스타일 (초기 질문) */
+#mascotModal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#mascotModal button:nth-child(2) { background-color: #76B82A; }
+#mascotModal button:nth-child(2):hover { background-color: #5A9216; }
+#mascotModal button:nth-child(3) { background-color: #A3D977; }
+#mascotModal button:nth-child(3):hover { background-color: #8BC34A; }
+#mascotModal button:nth-child(4) { background-color: #E0E0E0; color: #333; }
+#mascotModal button:nth-child(4):hover { background-color: #BDBDBD; }
+
+/* 가게 추천 말풍선 고정 안정화 */
+#recommendPlace {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 350px;
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1100;
+    display: none;
+    overflow: visible;
+}
+
+#recommendPlace::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;  /* ✅ 내부 박스 안쪽에 표시 (패딩 고려한 위치) */
+    left: 50%;
+    transform: translateX(-30%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+
+/* 메뉴 추천 결과 말풍선 */
+#recommendMenu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1100;
+    display: none;
+}
+
+#recommendMenu::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* 추천 상단 가게정보 */
+.recommend-header {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.recommend-header .recommend-like {
+    margin-left: 10px;
+    color: red;
+    font-weight: normal;
+}
+
+/* 3분할 본문 */
+.recommend-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    height: 170px;
+    overflow: hidden;
+}
+
+.recommend-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.recommend-reviews {
+    flex: 1;
+    font-size: 0.95rem;
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.review-section-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #6b4f34;
+    padding-left: 9px;
+}
+
+.review-box span {
+    display: block;
+    background-color: #f8f5eb;
+    margin: 4px 0;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    color: #6b4f34;
+}
+
+.category-box span, .tag-box span {
+    display: block;
+    background-color: #eee;
+    margin: 4px 0;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+}
+
+.tag-box {
+    margin-top: 19px;
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.recommend-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.recommend-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.recommend-buttons .goStoreBtn { background-color: #76B82A; color: white; }
+.recommend-buttons .goStoreBtn:hover { background-color: #5A9216; }
+.recommend-buttons .nextBtn { background-color: #e57373; color: white; }
+.recommend-buttons .nextBtn:hover { background-color: #d32f2f; }
+.recommend-buttons .closeBtn { background-color: #E0E0E0; color: #333; }
+.recommend-buttons .closeBtn:hover { background-color: #BDBDBD; }
+
+.menu-filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.menu-filter-buttons .typeBtn {
+    padding: 10px 16px;
+    border-radius: 30px;
+    border: 2px solid #cccccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.menu-filter-buttons .typeBtn.active {
+    background-color: #FFD966;
+    border-color: #FFD966;
+    color: white;
+    box-shadow: none;
+}
+
+.menu-filter-buttons .typeBtn:active {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25) inset;
+}
+
+#ByeMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1100;
+    display: none;
+}
+
+#ByeMessage::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
