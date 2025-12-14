@@ -68,8 +68,8 @@
 ## ⚙ 기술 스택
 
 ### Back-end
--Java
--Mysql
+- Java
+- Mysql
 
 ### Front-end
 - JSP
@@ -81,8 +81,9 @@
 - Apache Tomcat
 - MySQL Connector
 - JSTL
-- Jakarta Mail (이메일 인증)
+- Jakarta Mail (Gmail SMTP 이메일 인증)
 - Commons FileUpload (파일 업로드)
+- Kakao API
 
 ---
 
