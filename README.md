@@ -29,13 +29,14 @@
 ## 🧩 주요 기능
 
 ### 👤 사용자 기능
-- 회원가입 / 로그인 / 로그아웃
-- 자동 로그인(Filter 기반)
+- 회원가입 (Gmail SMTP)
+- 자동 로그인 (Filter 기반)
 - 마이페이지 (프로필 이미지 업로드, 비밀번호 변경)
-- 음식점 목록 조회 및 상세 페이지 확인
+- 랜덤 음식 및 메뉴 추천(반응형)
 - 리뷰 작성 및 삭제 (이미지 포함)
-- 음식점 북마크 토글
-- 랜덤 음식점 추천 기능
+- 음식점 목록 조회 및 상세 페이지 확인
+- 학교에서 음식점까지 도보 길찾기 제공
+
 
 ### 🛠 관리자 기능
 - 사용자 전체 조회 / 상세 조회 / 수정 / 삭제
@@ -49,11 +50,10 @@
 
 ## 🖥 화면 구성
 
-> 실제 서비스 화면 캡처 또는 GIF를 첨부합니다
+> 실제 서비스 화면 시현 영상
 
-|Main Page|Detail Page|
-|:---:|:---:|
-|<img src="" width="400"/>|<img src="" width="400"/>|
+[[Demo Video](docs/demo.mp4)]
+
 
 ---
 
@@ -62,18 +62,14 @@
 본 프로젝트는 **Servlet 기반 MVC 구조**로 구현되었으며  
 기능 단위로 URL을 명확히 분리하여 설계했습니다
 
-👉🏻 [API 상세 문서 바로가기](/backend/APIs.md)
 
 ---
 
 ## ⚙ 기술 스택
 
 ### Back-end
-<div>
-<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Java.png?raw=true" width="80">
-<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/Mysql.png?raw=true" width="80">
-<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/JSP.png?raw=true" width="80">
-</div>
+-Java
+-Mysql
 
 ### Front-end
 - JSP
@@ -92,7 +88,6 @@
 
 ## 🛠️ 프로젝트 아키텍처
 
-![no-image]()
 
 ### 구조 설명
 - **Controller (Servlet)**  
@@ -110,7 +105,9 @@
 
 ## 🧱 DB / ERD 설계
 
-https://www.erdcloud.com/d/S3fkBFGf7DZbjzDfq
+<img src="docs/ERD.png" width="400"/>
+[ERD](https://www.erdcloud.com/d/S3fkBFGf7DZbjzDfq)
+
 
 - User / Store / Review / Menu / Bookmark
 - Category / Tag / Marker
@@ -123,36 +120,90 @@ https://www.erdcloud.com/d/S3fkBFGf7DZbjzDfq
 
 ## 🤔 기술적 이슈와 해결 과정
 
-### 1️⃣ 자동 로그인 구현
-- 문제  
-  로그인 상태 유지가 불가능함
-- 해결  
-  Filter를 이용해 세션 및 쿠키 기반 자동 로그인 처리
-- 결과  
-  사용자 UX 개선 및 인증 로직 분리
+### 1️⃣ 위치 기반 길찾기 범위 제한 문제 (네이버 지도)
+
+- **문제**  
+  네이버 지도 URL을 생성하여 길찾기 기능을 제공했으나  
+  네이버 지도 API의 특성상 **고정된 기본 지도 좌표(동아시아 기준)**를 사용하여  
+  사용자의 실제 위치를 기준으로 지도 범위를 제한할 수 없었음
+
+- **해결**  
+  HTML5 Geolocation API를 활용하여  
+  브라우저(Chrome)에서 **사용자 현재 위치 정보를 직접 수집**하고  
+  해당 좌표를 기반으로 길찾기 URL을 동적으로 생성함
+
+- **결과**  
+  사용자 위치 기준의 정확한 길찾기 제공이 가능해졌으며  
+  위치 기반 서비스의 사용자 경험을 개선함
 
 ---
 
-### 2️⃣ 리뷰 이미지 업로드 처리
-- 문제  
-  다중 이미지 업로드 시 서버 처리 오류 발생
-- 해결  
-  Commons FileUpload 라이브러리 활용  
-  파일 저장 로직과 DB 저장 로직 분리
-- 결과  
-  안정적인 리뷰 이미지 업로드 구현
+### 2️⃣ 파일 및 리소스 빌드 패스 누락 문제
+
+- **문제**  
+  이미지, SQL 스크립트, 외부 라이브러리를 레포지토리에 추가했음에도  
+  서버 실행 시 해당 리소스가 정상적으로 로드되지 않는 문제가 발생함
+
+- **해결**  
+  프로젝트 설정에서 **Build Path에 리소스를 명시적으로 추가**하여  
+  빌드 및 서버 실행 시 함께 로드되도록 설정함
+
+- **결과**  
+  개발 환경과 실행 환경 간 차이를 해소하였고  
+  리소스 누락으로 인한 오류를 방지할 수 있었음
 
 ---
 
-### 3️⃣ 관리자 / 사용자 기능 분리
-- 문제  
-  동일 URL에서 권한 구분이 어려움
-- 해결  
-  URL 패턴을 기준으로 관리자 전용 서블릿 분리
-- 결과  
-  유지보수성과 보안성 향상
+### 3️⃣ Servlet 매핑 오류 및 DB 처리 이후 화면 갱신 흐름 설계
+
+- **문제**  
+  `@WebServlet` 어노테이션으로 매핑한 URL과  
+  JSP의 `<form action>` 경로가 일치하지 않아  
+  요청이 Controller(Servlet)까지 정상적으로 전달되지 않는 문제가 발생함  
+  또한 DB 처리 이후 `.jsp` 페이지를 직접 반환하면서  
+  변경된 데이터가 화면에 즉시 반영되지 않는 문제가 함께 발생함
+
+- **해결**  
+  다음과 같이 요청 흐름과 역할을 명확히 분리함  
+  - JSP의 form action 경로와 `@WebServlet` 매핑 값을 정확히 일치시킴  
+  - **페이지 → 페이지 이동**은 JSP 단위로 처리  
+  - **페이지 → DB 접근 및 비즈니스 로직**은 반드시 Servlet에서 처리  
+  - DB 변경 이후에는 Servlet에서 `redirect`를 사용하여  
+    최신 데이터를 다시 조회하는 흐름으로 설계함
+
+- **결과**  
+  요청 흐름이 명확해졌고  
+  DB 상태와 화면 상태가 일관되게 유지되었으며  
+  MVC 패턴에서 Controller와 View의 책임 분리에 대한 이해도가 향상됨
 
 ---
+
+### 4️⃣ 리뷰 별점 및 이미지 상태 유지 문제 (JavaScript + Session + DB)
+
+- **문제**  
+  리뷰 작성 화면에서 JavaScript로 구현한  
+  별점 선택 UI와 이미지 미리보기 기능이  
+  페이지 이동 또는 새로고침 이후 유지되지 않는 문제가 발생함
+
+- **해결**  
+  - 리뷰 작성 시 선택한 별점 정보와 이미지 정보를  
+    **세션에 임시 저장**하여 페이지 이동 간 상태를 유지함  
+  - 최종 제출 시에는 Servlet을 통해  
+    세션에 저장된 데이터와 함께 DB에 저장하고  
+    이후 화면 렌더링 시 DB에서 조회한 값을 기준으로 화면을 구성함
+
+- **결과**  
+  페이지 이동 및 새로고침 이후에도  
+  리뷰 별점과 이미지 상태가 안정적으로 유지되었고  
+  프론트엔드(JavaScript) 상태 관리와  
+  백엔드(Session/DB) 간의 역할 분리를 경험할 수 있었음
+
+---
+
+## 발표 PPT
+
+[BabPool PPT](docs/BabPool.pdf)
+
 
 ## 📁 프로젝트 구조
 
@@ -172,3 +223,29 @@ BabPool
  │   ├─ images
  │   └─ sql
  └─ logs
+
+[Browser]
+   |
+   |  HTTP Request
+   v
+[TOMCAT]
+   |
+   v
+[Filter Chain]  (예: AutoLoginFilter, LogFileFilter)
+   |
+   v
+[Controller: Servlet]  (예: LoginServlet, PlaceDetailServlet, Admin*Servlet...)
+   |
+   |  (비즈니스 처리 / 유효성 검증 / 세션/쿠키)
+   v
+[DAO + DBUtil]  ---- JDBC ---->  [MySQL]
+   |
+   v
+[DTO/VO]
+   |
+   v
+[View: JSP] (mainPage.jsp, placeDetail.jsp, admin*.jsp...)
+   |
+   v
+[Browser]  (HTML/CSS/JS 렌더링)
+
