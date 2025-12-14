@@ -52,7 +52,7 @@
 
 > 실제 서비스 화면 시현 영상
 
-[[Demo Video](docs/demo.mp4)]
+[[Demo Video](https://drive.google.com/file/d/1vXmAsHwdgDKym9eXFfIR_43VZyAPWv3O/view?usp=drive_link)]
 
 
 ---
