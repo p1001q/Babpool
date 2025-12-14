@@ -110,6 +110,8 @@
 
 ## 🧱 DB / ERD 설계
 
+https://www.erdcloud.com/d/S3fkBFGf7DZbjzDfq
+
 - User / Store / Review / Menu / Bookmark
 - Category / Tag / Marker
 - 다대다 관계를 매핑 테이블로 분리하여 정규화
