@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- logo -->
-<img src="" width="400"/>
+<img src="docs/mascot_open.png" width="400"/>
 
 ### BabPool 🍚  
 ### 위치 기반 음식점 추천 & 리뷰 웹 서비스
