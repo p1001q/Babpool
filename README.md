@@ -253,3 +253,13 @@ BabPool
    v
 [Browser]  (HTML/CSS/JS 렌더링)
 
+```
+
+## 💁‍♂️ 프로젝트 팀원
+
+
+Frontend & Backend
+
+<br>
+[김동국](https://github.com/catomat0) | [박수연](https://github.com/p1001q)
+
